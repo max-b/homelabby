@@ -17,6 +17,7 @@ $ terraform apply
 ```
 
 ## Ansible
+You must have a public key for root access to the DO droplet at `~/.ssh/id_rsa_ec.pub`
 
 To install the requisite roles and collections:
 ```
