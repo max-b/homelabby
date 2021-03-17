@@ -4,6 +4,17 @@ Documentation and configuration-as-code for the little homelab I've been tinkeri
 # Terraform and Ansible
 Terraform and Ansible are probably overkill for this project, but they're commonly used tools and they more or less match my use case 🤷.
 
+## Installation and Setup
+```
+$ virtualenv -p /usr/bin/python3 venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+```
+
+Installing Terraform is generally just downloading a binary
+
+Copy the `./terraform/terraform.tfvars.example` file to `./terraform/terraform.tfvars` and put in your `do_token` and `ssh_fingerprint`
+
 ## Terraform
 Terraform in particular is way overkill for this project. I'm currently using it to spin up a single droplet 🙃.
 
