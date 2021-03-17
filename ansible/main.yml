@@ -1,0 +1,50 @@
+---
+- hosts: all
+
+  collections:
+    - community.general
+    - devsec.hardening
+
+  vars:
+    users:
+      - name: maxb
+        key: "{{ lookup('file', '~/.ssh/id_rsa_ec.pub') }}"
+
+  roles:
+    - name: digitalocean
+      tags:
+        - digitalocean
+
+    - name: users
+      tags:
+        - users
+
+    - name: ufw
+      tags:
+        - ufw
+
+    - name: irssi
+      tags:
+        - irssi
+
+    - name: devsec.hardening.ssh_hardening
+      ssh_permit_root_login: without-password
+      ssh_max_auth_retries: 10
+      tags:
+        - hardening
+        - ssh_hardening
+
+    - name: devsec.hardening.os_hardening
+      sysctl_overwrite:
+        net.ipv4.ip_forward: 1
+      ufw_default_forward_policy: ACCEPT
+      tags:
+        - hardening
+        - os_hardening
+
+    - name: mawalu.wireguard_private_networking
+      client_vpn_ip: 10.1.0.100
+      client_wireguard_path: "~/wg0.conf"
+      tags:
+        - wireguard
+

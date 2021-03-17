@@ -1,0 +1,11 @@
+# terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# ansible
+secrets.yml
+*.retry
+inventory
+venv

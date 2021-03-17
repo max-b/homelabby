@@ -1,0 +1,12 @@
+# roles/irssi/tasks/main.yml
+---
+- name: Update all packages
+  apt:
+    upgrade: dist
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install irssi (and tmux just because)
+  apt:
+    name: ['irssi', 'tmux']
+    state: present
